@@ -1,0 +1,80 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "Neverlose"
+			}
+		},
+		{
+			"path": "pages/index/profile",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
+		},
+		{
+			"path": "pages/index/item",
+			"style": {
+				"navigationBarTitleText": "项目管理"
+			}
+		},
+		{
+			"path": "pages/index/order",
+			"style": {
+				"navigationBarTitleText": "订单管理"
+			}
+		},
+		{
+			"path": "pages/index/upsertItem",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/guild",
+			"style": {
+				"navigationBarTitleText": "使用教程"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Neverlose",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		},
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"borderStyle": "white",
+		"backgroundColor": "#fff",
+		"selectedColor": "24afd6",
+		"color": "#555",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/icons/home.png",
+				"selectedIconPath": "static/icons/home.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/index/profile",
+				"iconPath": "static/icons/profile.png",
+				"selectedIconPath": "static/icons/profile.png",
+				"text": "配置"
+			},
+			{
+				"pagePath": "pages/index/item",
+				"iconPath": "static/icons/item.png",
+				"selectedIconPath": "static/icons/item.png",
+				"text": "项目"
+			},
+			{
+				"pagePath": "pages/index/order",
+				"iconPath": "static/icons/order.png",
+				"selectedIconPath": "static/icons/order.png",
+				"text": "订单"
+			}
+		]
+	}
+}

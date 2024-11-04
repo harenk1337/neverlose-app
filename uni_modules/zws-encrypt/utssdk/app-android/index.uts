@@ -1,0 +1,28 @@
+import MessageDigest from "java.security.MessageDigest"
+import String from "kotlin.String";
+import Base64 from 'java.util.Base64';
+import BigInteger from 'java.math.BigInteger';
+import Cipher from 'javax.crypto.Cipher';
+import SecretKeySpec from 'javax.crypto.spec.SecretKeySpec';
+
+
+export class zwsCrypt {
+	public static MD5(text:String):string|null {
+		return encrypt(text,"MD5");
+	};
+	public static SHA1(text:String):string|null {
+		return encrypt(text,"SHA-1");
+	};
+	public static SHA256(text:String):string|null {
+		return encrypt(text,"SHA-256");
+	};
+	public static SHA512(text:String):string|null {
+		return encrypt(text,"SHA-512");
+	};
+};
+
+function encrypt(text:String,type:string):string|null {
+	var md5s = MessageDigest.getInstance(type).digest(text.toByteArray());
+	Base64.getEncoder().encodeToString(md5s);
+	return new BigInteger(1,md5s).toString(16);
+}
