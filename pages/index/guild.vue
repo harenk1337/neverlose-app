@@ -54,12 +54,8 @@
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
-	import {
-		onLoad
-	} from '@dcloudio/uni-app'
+	import { ref } from 'vue'
+	import { onLoad } from '@dcloudio/uni-app'
 	import MyNavBarVue from '../../components/MyNavBar.vue'
 
 	const height = ref()

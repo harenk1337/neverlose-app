@@ -12,7 +12,7 @@
 						trim></uni-easyinput>
 				</uni-forms-item>
 			</uni-forms>
-			<button type="primary" @click="saveItem" :loading="loading">保存项目</button>
+			<button type="primary" @click="saveItem">保存项目</button>
 			<br />
 			<button type="default" @click="handleBack" >返回</button>
 		</view>
@@ -20,17 +20,12 @@
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
-	import {
-		onLoad
-	} from '@dcloudio/uni-app'
+	import { ref } from 'vue'
+	import { onLoad } from '@dcloudio/uni-app'
 	import itemService from '../../services/itemService';
 
 	const height = ref()
 	const title = ref('新增项目')
-	const loading = ref(false)
 	const formRef = ref()
 	const formData = ref({
 		id: void 0,
@@ -65,9 +60,7 @@
 		if (data.id !== void 0) {
 			title.value = '修改项目'
 			const [result] = await itemService.getById(data.id)
-			formData.value = {
-				...result
-			}
+			formData.value = { ...result }
 		}
 	})
 

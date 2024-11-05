@@ -16,10 +16,12 @@
 					<text>暂无项目</text>
 					<br />
 					<br />
+					<button type="primary" @click="handlePush('item')">点击去新增项目</button>
 				</view>
-				<button v-if="itemList.length < 1" type="primary" @click="handlePush('item')">点击去新增项目</button>
-				<br v-if="itemList.length >= 1" />
-				<button v-if="itemList.length >= 1" type="primary" @click="onSubmit" :loading="loading">开始绑定</button>
+				<view v-else>
+					<br />
+					<button type="primary" @click="onSubmit">开始绑定</button>
+				</view>
 				<br />
 				<button type="warn" @click="handlePush('guild')">使用教程</button>
 				<br />
@@ -31,18 +33,13 @@
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
-	import {
-		onLoad
-	} from '@dcloudio/uni-app'
+	import { ref } from 'vue'
+	import { onLoad } from '@dcloudio/uni-app'
 	import itemService from '../../services/itemService';
 	import MyNavBarVue from '../../components/MyNavBar.vue';
 	import userService from '../../services/userService';
 	import orderService from '../../services/orderService';
 
-	const loading = ref(false)
 	const itemList = ref([])
 	onLoad(async () => {
 		const data = await itemService.getItemList()
@@ -75,7 +72,7 @@
 		'User doesn\'t exist.': '用户不存在',
 		'Invalid key.': 'API ID设置错误,请检查',
 		'signature error': 'API KEY设置错误,请检查',
-		'item error(must be approved, paid and public)': '项目错误,必须已通过且设置为付费且公开(Public)',
+		'item error(must be approved, paid and public)': '项目错误,必须已通过且设置为付费并公开(Public)',
 		'invalid item': '项目代码设置错误,请检查'
 	}
 	const onSubmit = async () => {
@@ -88,7 +85,7 @@
 				username: formData.value.username,
 				itemName,
 				status: data.success ? '成功' : '失败',
-				reason: data.success ? '无' : reasonMap[data['error']],
+				reason: data.success ? '无' : reasonMap[data.error],
 				createTime: new Date().toISOString().substring(0, 19).replace('T', ' ')
 			})
 			uni.showToast({

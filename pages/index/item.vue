@@ -48,13 +48,13 @@
 		tableData.value = await itemService.getItemList()
 	})
 	const handleAdd = () => {
-		uni.navigateTo({
+		uni.reLaunch({
 			url: `/pages/index/upsertItem`
 		})
 	}
 
 	const handleEdit = id => {
-		uni.navigateTo({
+		uni.reLaunch({
 			url: `/pages/index/upsertItem?id=${id}`
 		})
 	}

@@ -1,14 +1,12 @@
 <template>
 	<view>
 		<uni-nav-bar :title="title" :height="height" fixed :border="false" />
-			<slot></slot>
+			<slot />
 	</view>
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
+	import { ref } from 'vue'
 	import { onLoad } from '@dcloudio/uni-app'
 	
 	defineProps({

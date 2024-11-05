@@ -15,7 +15,7 @@ export default {
 	},
 
 	async getConfig() {
-		const sql = `select * from config`
+		const sql = `select id, user_id as userId, api_key as apiKey from config`
 		return await db.selectSql(sql)
 	},
 
@@ -48,7 +48,7 @@ export default {
 			})
 
 			setTimeout(() => {
-				uni.navigateTo({
+				uni.reLaunch({
 					url: '/pages/index/profile'
 				})
 			}, 1000)

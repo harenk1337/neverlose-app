@@ -12,7 +12,7 @@
 							trim></uni-easyinput>
 					</uni-forms-item>
 				</uni-forms>
-				<button type="primary" @click="saveConfig" :loading="loading">保存信息</button>
+				<button type="primary" @click="saveConfig">保存信息</button>
 				<br />
 				<uni-link href="https://en.neverlose.cc/market/api" :show-under-line="false">
 					<button type="default">查看配置</button>
@@ -23,16 +23,11 @@
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
-	import {
-		onLoad
-	} from '@dcloudio/uni-app'
+	import { ref } from 'vue'
+	import { onLoad } from '@dcloudio/uni-app'
 	import userService from '../../services/userService';
 	import MyNavBarVue from '../../components/MyNavBar.vue';
-
-	const loading = ref(false)
+ 
 	const formRef = ref()
 	const formData = ref({
 		id: '',
@@ -61,10 +56,9 @@
 	}
 
 	onLoad(async () => {
-		const data = await userService.getConfig()
-		formData.value.id = data[0].id
-		formData.value.userId = data[0].user_id
-		formData.value.apiKey = data[0].api_key
+		let data = await userService.getConfig()
+		data = data[0]
+		formData.value = { ...data }
 	})
 	const saveConfig = async () => {
 		formRef.value.validate().then(async () => {
